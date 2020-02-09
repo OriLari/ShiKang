@@ -1,0 +1,167 @@
+随机乱数测试 伪随机测试
+输入 encrypted
+test 1
+输入 e 16 16 
+输出 7dc81de31b08cbff73b6fa50a289144c  
+
+test 2
+输入 e 15 15
+输出 965b7f53d97e85bf484bd36b36c5bd52
+
+test 3
+输入 e 14 14
+输出 c8436f3c08df5ee3590cee6e40b447a7
+
+test 4
+输入 e 13 13 
+输出 361dd1cc49c4160a262ec3b8ed002e92
+
+test 5
+输入 e 12 12
+输出 db5adc23767a9a641729ac02edc2e57c
+
+test 6
+输入 e 11 11
+输出48267a0be2623cdbcd7f6d2da9bf4467
+
+test 7
+输入 e 10 10 
+输出 b7ed164a2cace3eb49f85c235e91514a
+
+test 8
+输入 e 9 9
+输出 b6a0ab4f447b85da299117d20289cc4
+
+test 9
+输入 e 8 8
+输出 30fb952b722413b47de800cdbf1fbcc6
+
+test 10
+输入 e 7 7
+输出 7689d41a8e15456e3af48977fca3aa24
+
+test 11
+输入 e 6 6
+输出 95488e992c2305fa8289d73aad454bf2
+
+test 12
+输入 e 5 5
+输出 7b04a86e5889d8737157e1b16b6849b
+
+test 13
+输入 e 4 4
+输出 39f96776a66d645f89e04e20cdfbbd4c
+
+test 14
+输入 e 3 3
+输出 afd9d94764c222dccbf6cc2524d0dde1
+
+test 15
+输入 e 2 2
+输出 6aba8d054eea3b883da1428189be19b7
+
+test 16
+输入 e 1 1
+输出 a17e9f69e4f25a8b8620b4af78eefd6f
+
+
+outArea test 17
+输入 e -1 -1
+输出 Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 256
+
+outArea test 18
+输入 e 257 257
+输出 f81a0f2d220161a622b4fe9b4458d69d
+
+outArea test 19
+输入 e alpha beta
+输出 Exception in thread "main" java.lang.NumberFormatException: For input string: "alpha"
+
+
+
+输入 decrypt
+test 20
+输入 d 16 16
+输出 41cfd7a7e37172a136dae2ddf3b5d5aa
+
+test 21
+输入 d 15 15
+输出 12b037d9395639275f462ab6d52deb58
+
+test 22
+输入 d 14 14
+输出 7cd38b2dc7f4d37aab5fba845ab2d9e8
+
+test 23
+输入 d 13 13
+输出 b7f7d48cc80e2e1290b518fc914e8115
+
+test 24
+输入 d 12 12 
+输出 1e16627018f612361e462fd5b937b3c1
+
+test 25
+输入 d 11 11
+输出 e91d6e515e3b93866a5ea3b06877ce44
+
+test 26
+输入 d 10 10
+输出 8970d7a393d138d9db624c6837a6c3cb
+
+test 27
+输入 d 9 9
+输出 8955cc4774509e70a9ea1491f659d7bf
+
+test 28
+输入 d 8 8
+输出 e77ed6edd530029b196322020b10a99f
+
+test 29 
+输入 d 7 7
+输出 c1f77fde8b380edcffff18d8f587dcae
+
+test 30
+输入 d 6 6
+输出 88d63027fee91c71db35f8d673ff57f1
+
+test 31
+输入 d 5 5
+输出 c9007953e5e9aeaab61406d1207e6db6
+
+test 32
+输入 d 4 4
+输出 50c8e378babbb4c4e1e4564a07894f61
+
+test 33
+输入 d 3 3
+输出 4f4991c383aeb711b9bb48b48a421ece
+
+test 34
+输入 d 2 2
+输出 cf5b3d1a0b4eb9a0f441b5ee03aa8c64
+
+test 35
+输入 d 1 1
+输出 7b138688980f1a8fd92538ab13ead92f
+
+outArea test 36
+输入 d -1 -1
+输出 Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 256
+
+outArea test 37
+输入 d 257 257
+输出 657626359ecc24f4cc3552973d891942
+
+outArea test 38
+输入 d alpha beta
+输出 Exception in thread "main" java.lang.NumberFormatException: For input string: "alpha"
+
+Stringtest 39
+输入 e a a
+输出 795aa60a8a9a51276d3cf1c014057dcd 
+
+Stringtest 40
+输入 d a a
+输出 795aa60a8a9a51276d3cf1c014057dcd
+
+随即乱数测试40例，抛异常正常 AES.java
