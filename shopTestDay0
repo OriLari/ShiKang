@@ -1,0 +1,288 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------------< com.iwc:shop >----------------------------
+[INFO] Building iwc-shop 1.0.0
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ shop ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.258 s
+[INFO] Finished at: 2020-02-09T13:13:44+08:00
+[INFO] ------------------------------------------------------------------------
+
+
+
+Java HotSpot(TM) 64-Bit Server VM warning: Option FlightRecorder was deprecated in version 13.0 and will likely be removed in a future release.
+Started recording 1. No limit specified, using maxsize=250MB as default.
+
+Use jcmd 18364 JFR.dump name=\"Test 2020_02_09_140804\" to copy recording data to file.
+错误: 找不到或无法加载主类 com.iwc.shop.test.Test
+原因: java.lang.ClassNotFoundException: com.iwc.shop.test.Test
+
+Process finished with exit code 1
+
+Information:java: Errors occurred while compiling module 'shop'
+Information:javac 11 was used to compile java sources
+Information:Module "main" was fully rebuilt due to project configuration/dependencies changes
+Information:2020/2/9 14:55 - Build completed with 89 errors and 5 warnings in 23 s 376 ms
+Warning:java: 源值6已过时, 将在未来所有发行版中删除
+Warning:java: 目标值1.6已过时, 将在未来所有发行版中删除
+Warning:java: 要隐藏有关已过时选项的警告, 请使用 -Xlint:-options。
+C:\Users\shik8\IdeaProjects\Shop-for-JavaWeb-master\src\main\java\com\iwc\shop\common\persistence\SortEntity.java
+Error:(11, 26) java: 程序包javafx.scene.chart不存在
+C:\Users\shik8\IdeaProjects\Shop-for-JavaWeb-master\src\main\java\com\iwc\shop\common\utils\excel\ExportExcel.java
+Error:(24, 35) java: 找不到符号
+  符号:   类 Cell
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(25, 35) java: 找不到符号
+  符号:   类 CellStyle
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(26, 35) java: 找不到符号
+  符号:   类 Comment
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(27, 35) java: 找不到符号
+  符号:   类 DataFormat
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(28, 35) java: 找不到符号
+  符号:   类 Font
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(29, 35) java: 找不到符号
+  符号:   类 IndexedColors
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(30, 35) java: 找不到符号
+  符号:   类 Row
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(31, 35) java: 找不到符号
+  符号:   类 Sheet
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(32, 35) java: 找不到符号
+  符号:   类 Workbook
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(33, 30) java: 程序包org.apache.poi.ss.util不存在
+Error:(61, 44) java: 找不到符号
+  符号:   类 Sheet
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(236, 53) java: 找不到符号
+  符号:   类 Workbook
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(301, 16) java: 找不到符号
+  符号:   类 Row
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(313, 29) java: 找不到符号
+  符号:   类 Row
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(313, 16) java: 找不到符号
+  符号:   类 Cell
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(325, 29) java: 找不到符号
+  符号:   类 Row
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(325, 16) java: 找不到符号
+  符号:   类 Cell
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(196, 33) java: 找不到符号
+  符号:   方法 setHeightInPoints(int)
+  位置: 类型为Row的变量 titleRow
+Error:(197, 25) java: 找不到符号
+  符号:   类 Cell
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(197, 50) java: 找不到符号
+  符号:   方法 createCell(int)
+  位置: 类型为Row的变量 titleRow
+Error:(200, 51) java: 找不到符号
+  符号:   类 CellRangeAddress
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(200, 76) java: 找不到符号
+  符号:   方法 getRowNum()
+  位置: 类型为Row的变量 titleRow
+Error:(201, 49) java: 找不到符号
+  符号:   方法 getRowNum()
+  位置: 类型为Row的变量 titleRow
+Error:(201, 71) java: 找不到符号
+  符号:   方法 getRowNum()
+  位置: 类型为Row的变量 titleRow
+Error:(208, 26) java: 找不到符号
+  符号:   方法 setHeightInPoints(int)
+  位置: 类型为Row的变量 headerRow
+Error:(210, 52) java: 找不到符号
+  符号:   方法 createCell(int)
+  位置: 类型为Row的变量 headerRow
+Error:(211, 29) java: 找不到符号
+  符号:   方法 setCellStyle(CellStyle)
+  位置: 类型为com.google.common.collect.Table.Cell的变量 cell
+Error:(214, 37) java: 找不到符号
+  符号:   方法 setCellValue(java.lang.String)
+  位置: 类型为com.google.common.collect.Table.Cell的变量 cell
+Error:(217, 40) java: 找不到符号
+  符号:   方法 setString(org.apache.poi.xssf.usermodel.XSSFRichTextString)
+  位置: 类型为com.iwc.shop.modules.cms.entity.Comment的变量 comment
+Error:(218, 37) java: 找不到符号
+  符号:   方法 setCellComment(com.iwc.shop.modules.cms.entity.Comment)
+  位置: 类型为com.google.common.collect.Table.Cell的变量 cell
+Error:(220, 37) java: 找不到符号
+  符号:   方法 setCellValue(java.lang.String)
+  位置: 类型为com.google.common.collect.Table.Cell的变量 cell
+Error:(240, 45) java: 找不到符号
+  符号:   变量 ALIGN_CENTER
+  位置: 类 java.lang.Object
+Error:(241, 53) java: 找不到符号
+  符号:   变量 VERTICAL_CENTER
+  位置: 类 java.lang.Object
+Error:(242, 17) java: 找不到符号
+  符号:   类 Font
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(245, 41) java: 找不到符号
+  符号:   变量 Font
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(250, 53) java: 找不到符号
+  符号:   变量 VERTICAL_CENTER
+  位置: 类 java.lang.Object
+Error:(251, 47) java: 找不到符号
+  符号:   变量 BORDER_THIN
+  位置: 类 java.lang.Object
+Error:(252, 56) java: 程序包IndexedColors不存在
+Error:(253, 46) java: 找不到符号
+  符号:   变量 BORDER_THIN
+  位置: 类 java.lang.Object
+Error:(254, 55) java: 程序包IndexedColors不存在
+Error:(255, 45) java: 找不到符号
+  符号:   变量 BORDER_THIN
+  位置: 类 java.lang.Object
+Error:(256, 54) java: 程序包IndexedColors不存在
+Error:(257, 48) java: 找不到符号
+  符号:   变量 BORDER_THIN
+  位置: 类 java.lang.Object
+Error:(258, 57) java: 程序包IndexedColors不存在
+Error:(259, 17) java: 找不到符号
+  符号:   类 Font
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(266, 22) java: 找不到符号
+  符号:   方法 cloneStyleFrom(CellStyle)
+  位置: 类型为CellStyle的变量 style
+Error:(267, 45) java: 找不到符号
+  符号:   变量 ALIGN_LEFT
+  位置: 类 java.lang.Object
+Error:(271, 22) java: 找不到符号
+  符号:   方法 cloneStyleFrom(CellStyle)
+  位置: 类型为CellStyle的变量 style
+Error:(272, 45) java: 找不到符号
+  符号:   变量 ALIGN_CENTER
+  位置: 类 java.lang.Object
+Error:(276, 22) java: 找不到符号
+  符号:   方法 cloneStyleFrom(CellStyle)
+  位置: 类型为CellStyle的变量 style
+Error:(277, 45) java: 找不到符号
+  符号:   变量 ALIGN_RIGHT
+  位置: 类 java.lang.Object
+Error:(281, 22) java: 找不到符号
+  符号:   方法 cloneStyleFrom(CellStyle)
+  位置: 类型为CellStyle的变量 style
+Error:(283, 45) java: 找不到符号
+  符号:   变量 ALIGN_CENTER
+  位置: 类 java.lang.Object
+Error:(284, 59) java: 程序包IndexedColors不存在
+Error:(285, 47) java: 找不到符号
+  符号:   变量 SOLID_FOREGROUND
+  位置: 类 java.lang.Object
+Error:(286, 17) java: 找不到符号
+  符号:   类 Font
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(289, 42) java: 找不到符号
+  符号:   变量 Font
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(290, 50) java: 程序包IndexedColors不存在
+Error:(326, 17) java: 找不到符号
+  符号:   类 Cell
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(342, 33) java: 找不到符号
+  符号:   类 DataFormat
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+Error:(342, 72) java: 无法访问org.apache.poi.ss.usermodel.DataFormat
+  找不到org.apache.poi.ss.usermodel.DataFormat的类文件
+Error:(368, 25) java: 找不到符号
+  符号:   类 Row
+  位置: 类 com.iwc.shop.common.utils.excel.ExportExcel<CellStyle,Sheet>
+C:\Users\shik8\IdeaProjects\Shop-for-JavaWeb-master\src\main\java\com\iwc\shop\common\utils\excel\ImportExcel.java
+Error:(25, 35) java: 找不到符号
+  符号:   类 Cell
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(26, 35) java: 找不到符号
+  符号:   类 DateUtil
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(27, 35) java: 找不到符号
+  符号:   类 Row
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(29, 35) java: 找不到符号
+  符号:   类 Workbook
+  位置: 程序包 org.apache.poi.ss.usermodel
+Error:(143, 28) java: 找不到符号
+  符号:   方法 getNumberOfSheets()
+  位置: 类型为Workbook的变量 wb
+Error:(146, 37) java: 找不到符号
+  符号:   方法 getSheetAt(int)
+  位置: 类型为Workbook的变量 wb
+Error:(157, 34) java: 找不到符号
+  符号:   方法 getRow(int)
+  位置: 类型为Sheet的变量 sheet
+Error:(173, 34) java: 找不到符号
+  符号:   方法 getLastRowNum()
+  位置: 类型为Sheet的变量 sheet
+Error:(181, 46) java: 找不到符号
+  符号:   方法 getLastCellNum()
+  位置: 类 org.apache.poi.hssf.record.formula.functions.Row
+Error:(193, 40) java: 找不到符号
+  符号:   方法 getCell(int)
+  位置: 类型为org.apache.poi.hssf.record.formula.functions.Row的变量 row
+Error:(195, 41) java: 找不到符号
+  符号:   方法 getCellType()
+  位置: 类型为org.apache.poi.hssf.record.formula.functions.Cell的变量 cell
+Error:(195, 63) java: 找不到符号
+  符号:   变量 CELL_TYPE_NUMERIC
+  位置: 类 org.apache.poi.hssf.record.formula.functions.Cell
+Error:(196, 51) java: 找不到符号
+  符号:   方法 getNumericCellValue()
+  位置: 类型为org.apache.poi.hssf.record.formula.functions.Cell的变量 cell
+Error:(197, 47) java: 找不到符号
+  符号:   方法 getCellType()
+  位置: 类型为org.apache.poi.hssf.record.formula.functions.Cell的变量 cell
+Error:(197, 69) java: 找不到符号
+  符号:   变量 CELL_TYPE_STRING
+  位置: 类 org.apache.poi.hssf.record.formula.functions.Cell
+Error:(198, 51) java: 找不到符号
+  符号:   方法 getStringCellValue()
+  位置: 类型为org.apache.poi.hssf.record.formula.functions.Cell的变量 cell
+Error:(199, 47) java: 找不到符号
+  符号:   方法 getCellType()
+  位置: 类型为org.apache.poi.hssf.record.formula.functions.Cell的变量 cell
+Error:(199, 69) java: 找不到符号
+  符号:   变量 CELL_TYPE_FORMULA
+  位置: 类 org.apache.poi.hssf.record.formula.functions.Cell
+Error:(200, 51) java: 找不到符号
+  符号:   方法 getCellFormula()
+  位置: 类型为org.apache.poi.hssf.record.formula.functions.Cell的变量 cell
+Error:(201, 47) java: 找不到符号
+  符号:   方法 getCellType()
+  位置: 类型为org.apache.poi.hssf.record.formula.functions.Cell的变量 cell
+Error:(201, 69) java: 找不到符号
+  符号:   变量 CELL_TYPE_BOOLEAN
+  位置: 类 org.apache.poi.hssf.record.formula.functions.Cell
+Error:(202, 51) java: 找不到符号
+  符号:   方法 getBooleanCellValue()
+  位置: 类型为org.apache.poi.hssf.record.formula.functions.Cell的变量 cell
+Error:(203, 47) java: 找不到符号
+  符号:   方法 getCellType()
+  位置: 类型为org.apache.poi.hssf.record.formula.functions.Cell的变量 cell
+Error:(203, 69) java: 找不到符号
+  符号:   变量 CELL_TYPE_ERROR
+  位置: 类 org.apache.poi.hssf.record.formula.functions.Cell
+Error:(204, 51) java: 找不到符号
+  符号:   方法 getErrorCellValue()
+  位置: 类型为org.apache.poi.hssf.record.formula.functions.Cell的变量 cell
+Error:(322, 63) java: 找不到符号
+  符号:   变量 DateUtil
+  位置: 类 com.iwc.shop.common.utils.excel.ImportExcel<Workbook,Sheet>
+Information:java: 某些输入文件使用了未经检查或不安全的操作。
+Information:java: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+C:\Users\shik8\IdeaProjects\Shop-for-JavaWeb-master\src\main\java\com\iwc\shop\modules\act\utils\ActUtils.java
