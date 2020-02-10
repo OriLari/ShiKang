@@ -1,0 +1,31 @@
+ public static void main(String[] args) {
+
+        RSA rsa = new RSA(1024);
+        String text1 = JOptionPane.showInputDialog("Enter a message to encrypt :");
+
+        String ciphertext = rsa.encrypt(text1);
+        JOptionPane.showMessageDialog(null, "Your encrypted message : " + ciphertext);
+
+        JOptionPane.showMessageDialog(null, "Your message after decrypt : " + rsa.decrypt(ciphertext));
+    }
+
+     public synchronized void generateKeys(int bits) {
+        SecureRandom r = new SecureRandom();
+        BigInteger p = new BigInteger(bits / 2, 100, r);
+        BigInteger q = new BigInteger(bits / 2, 100, r);
+        modulus = p.multiply(q);
+
+        BigInteger m = (p.subtract(BigInteger.ONE)).multiply(q.subtract(BigInteger.ONE));
+
+        publicKey = new BigInteger("3");
+
+        while (m.gcd(publicKey).intValue() > 1) {
+            publicKey = publicKey.add(new BigInteger("2"));
+        }
+
+        privateKey = publicKey.modInverse(m);
+    }
+
+    控制台输入 hello 
+    encrypt 编码会随着运行次数增加而逐渐增大
+    decrypt hello
