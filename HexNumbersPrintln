@@ -1,1 +1,69 @@
+system.out.println 1
+console 
+objConvert.completeDigits(num);
+Process finished with exit code 0
 
+
+//Hex [0-9],[A-F] -> Binary [0,1]
+public class HexaDecimalToBinary {
+
+    private final int LONG_BITS = 8;
+
+    public void convert(String numHex) {
+        // 定义一个 HexaDecimal: 16进制
+        int conHex = Integer.parseInt(numHex, 16);
+        // Hex a Binary:
+        String binary = Integer.toBinaryString(conHex);
+        // 输出
+        System.out.println(numHex + " = " + completeDigits(binary));
+    }
+
+    public String completeDigits(String binNum) {
+        for (int i = binNum.length(); i < LONG_BITS; i++) {
+            binNum = "0" + binNum;
+        }
+        return binNum;
+    }
+
+    public static void main(String[] args) {
+
+        //测试数组
+        String[] hexNums = {"1", "A1", "ef", "BA", "AA", "BB",
+                "19", "01", "02", "03", "04"};
+        HexaDecimalToBinary objConvert = new HexaDecimalToBinary();
+
+        for (String num : hexNums) {
+            objConvert.completeDigits(num);
+        }
+    }
+}
+
+console输出结果为0，无报错
+
+system.out.println 2
+console
+private final int LONG_BITS = Integer.parseInt(null)
+Exception in thread "main" java.lang.NumberFormatException: null
+
+system.out.println 3
+console
+无输出结果 无结构改变 无变化参数 链接未改变
+有回传参数，但不是数组结构
+
+ system.out.println 4
+ 错误调用已修正 completeDigits  convert
+ console
+ 1 = 00000001
+A1 = 10100001
+ef = 11101111
+BA = 10111010
+AA = 10101010
+BB = 10111011
+19 = 00011001
+01 = 00000001
+02 = 00000010
+03 = 00000011
+04 = 00000100
+
+Process finished with exit code 0
+更改输出结果
