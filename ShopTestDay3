@@ -1,0 +1,191 @@
+main方法
+public class SpringBootDemoTaskQuartzApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootDemoTaskQuartzApplication.class, args);
+
+    }
+控制器controller
+    public ResponseEntity<ApiResponse> jobList(Integer currentPage, Integer pageSize) {
+        if (ObjectUtil.isNull(currentPage)) {
+            currentPage = 1;
+        }
+        if (ObjectUtil.isNull(pageSize)) {
+            pageSize = 10;
+        }
+        PageInfo<JobAndTrigger> all = jobService.list(currentPage, pageSize);
+        return ResponseEntity.ok(ApiResponse.ok(Dict.create().set("total", all.getTotal()).set("data", all.getList())));
+    }
+bean类 触发器trigger 无适配器adaptation
+抛出异常java.net.BindException:Address already in use: JVM_Bind端口占用
+java.net.SocketException: (Connection reset或者Connect reset by peer:Socket write error)
+socket端关闭 断链后占用失效
+
+public class DBTypeAOP {
+ 
+    @Pointcut("@annotation(TargetDataSource)")
+    public void dbType() {
+    }
+    @Before("dbType()")
+    public void before(JoinPoint joinPoint) throws Throwable {
+        //获取当前的指定的数据源;
+        System.out.println("---------------before---------------");
+        TargetDataSource targetDataSource = ((MethodSignature)joinPoint.getSignature()).getMethod().getAnnotation(TargetDataSource.class);
+        String dsId = targetDataSource.value();
+        //如果不在我们注入的所有的数据源范围之内，那么输出警告信息，系统自动使用默认的数据源。
+        if (!DbContextHolder.containsDataSource(dsId)) {
+            System.err.println("数据源[{}]不存在，使用默认数据源 > {}"+targetDataSource.value()+joinPoint.getSignature());
+        } else {
+            System.out.println("Use DataSource : {} > {}"+targetDataSource.value()+joinPoint.getSignature());
+            //找到的话，那么设置到动态数据源上下文中。
+            DbContextHolder.setDbType(targetDataSource.value());
+        }
+    }
+ 
+    @After("dbType()")
+    public void after(JoinPoint joinPoint) {
+        System.out.println("--------------after----------------");
+        TargetDataSource targetDataSource = ((MethodSignature)joinPoint.getSignature()).getMethod().getAnnotation(TargetDataSource.class);
+        System.out.println("Revert DataSource : {} > {}"+targetDataSource.value()+joinPoint.getSignature());
+        //方法执行完毕之后，销毁当前数据源信息，进行垃圾回收。
+        DbContextHolder.clearDbType();
+    }
+}
+
+public class DynamicDataSourceRegister  implements ImportBeanDefinitionRegistrar, EnvironmentAware {
+ 
+    //如配置文件中未指定数据源类型，使用该默认值
+    private static final Object DATASOURCE_TYPE_DEFAULT = "com.alibaba.druid.pool.DruidDataSource";
+ 
+    private ConversionService conversionService = new DefaultConversionService();
+ 
+    private PropertyValues dataSourcePropertyValues;
+ 
+    // 默认数据源
+    private DataSource defaultDataSource;
+ 
+    private Map<String, DataSource> customDataSources = new HashMap<String, DataSource>();
+ 
+    /**
+     * 加载多数据源配置
+     */
+    @Override
+    public void setEnvironment(Environment environment) {
+       System.out.println("DynamicDataSourceRegister.setEnvironment()");
+       initDefaultDataSource(environment);
+        initCustomDataSources(environment);
+    }
+ 
+    /**
+     * 加载主数据源配置.
+     * @param env
+     */
+    private void initDefaultDataSource(Environment env){
+       // 读取主数据源
+       RelaxedPropertyResolver propertyResolver = new RelaxedPropertyResolver(env, "spring.datasource.");
+       Map<String, Object> dsMap = new HashMap<String, Object>();
+       dsMap.put("type", propertyResolver.getProperty("type"));
+        dsMap.put("driverClassName", propertyResolver.getProperty("driverClassName"));
+        dsMap.put("url", propertyResolver.getProperty("url"));
+        dsMap.put("username", propertyResolver.getProperty("username"));
+        dsMap.put("password", propertyResolver.getProperty("password"));
+        //创建数据源;
+        defaultDataSource = buildDataSource(dsMap);
+        dataBinder(defaultDataSource, env);
+    }
+ 
+    /**
+     * 初始化更多数据源
+     */
+    private void initCustomDataSources(Environment env) {
+        // 读取配置文件获取更多数据源，也可以通过defaultDataSource读取数据库获取更多数据源
+        RelaxedPropertyResolver propertyResolver = new RelaxedPropertyResolver(env, "custom.datasource.");
+        String dsPrefixs = propertyResolver.getProperty("names");
+        for (String dsPrefix : dsPrefixs.split(",")) {// 多个数据源
+            Map<String, Object> dsMap = propertyResolver.getSubProperties(dsPrefix + ".");
+            DataSource ds = buildDataSource(dsMap);
+            customDataSources.put(dsPrefix, ds);
+            dataBinder(ds, env);
+        }
+    }
+ 
+    /**
+     * 创建datasource.
+     * @param dsMap
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public DataSource buildDataSource(Map<String, Object> dsMap) {
+        Object type = dsMap.get("type");
+        if (type == null){
+            type = DATASOURCE_TYPE_DEFAULT;// 默认DataSource
+        }
+        Class<? extends DataSource> dataSourceType;
+        try {
+            dataSourceType = (Class<? extends DataSource>) Class.forName((String) type);
+            String driverClassName = dsMap.get("driverClassName").toString();
+            String url = dsMap.get("url").toString();
+            String username = dsMap.get("username").toString();
+            String password = dsMap.get("password").toString();
+            DataSourceBuilder factory =   DataSourceBuilder.create().driverClassName(driverClassName).url(url).username(username).password(password).type(dataSourceType);
+            return factory.build();
+        } catch (ClassNotFoundException e) {
+           e.printStackTrace();
+        }
+        return null;
+    }
+ 
+    /**
+     * 为DataSource绑定更多数据
+     * @param dataSource
+     * @param env
+     */
+    private void dataBinder(DataSource dataSource, Environment env){
+       RelaxedDataBinder dataBinder = new RelaxedDataBinder(dataSource);
+       dataBinder.setConversionService(conversionService);
+       dataBinder.setIgnoreNestedProperties(false);//false
+        dataBinder.setIgnoreInvalidFields(false);//false
+        dataBinder.setIgnoreUnknownFields(true);//true
+        if(dataSourcePropertyValues == null){
+            Map<String, Object> rpr = new RelaxedPropertyResolver(env, "spring.datasource").getSubProperties(".");
+            Map<String, Object> values = new HashMap<>(rpr);
+            // 排除已经设置的属性
+            values.remove("type");
+            values.remove("driverClassName");
+            values.remove("url");
+            values.remove("username");
+            values.remove("password");
+            dataSourcePropertyValues = new MutablePropertyValues(values);
+        }
+        dataBinder.bind(dataSourcePropertyValues);
+    }
+    @Override
+    public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+       System.out.println("DynamicDataSourceRegister.registerBeanDefinitions()");
+       Map<Object, Object> targetDataSources = new HashMap<Object, Object>();
+       // 将主数据源添加到更多数据源中
+        targetDataSources.put("dataSource", defaultDataSource);
+        DbContextHolder.dataSourceIds.add("dataSource");
+        // 添加更多数据源
+        targetDataSources.putAll(customDataSources);
+        for (String key : customDataSources.keySet()) {
+            DbContextHolder.dataSourceIds.add(key);
+        }
+        // 创建DynamicDataSource
+        GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
+        beanDefinition.setBeanClass(DynamicDataSource.class);
+        beanDefinition.setSynthetic(true);
+        MutablePropertyValues mpv = beanDefinition.getPropertyValues();
+        //添加属性：AbstractRoutingDataSource.defaultTargetDataSource
+        mpv.addPropertyValue("defaultTargetDataSource", defaultDataSource);
+        mpv.addPropertyValue("targetDataSources", targetDataSources);
+        registry.registerBeanDefinition("dataSource", beanDefinition);
+    }
+}
+
+输出异常 
+Caused by: java.net.ConnectException: Connection refused: connect
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+Caused by: java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+链接错误 springBootDemoTaskQuartApplication抛出错误异常
+重新配置spingboot  
