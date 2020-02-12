@@ -189,3 +189,5 @@ Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications lin
 Caused by: java.sql.SQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
 链接错误 springBootDemoTaskQuartApplication抛出错误异常
 重新配置spingboot  
+类包装
+spring framework
