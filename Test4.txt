@@ -1,0 +1,27 @@
+private String jobName;
+private String jobGroup;
+private String jobClassName;
+private String triggerName;
+private String triggerGroup;
+private BigInteger repeatInterval;
+private BigInteger timesTriggered;
+private String cronExpression;
+private String timeZoneId;
+private String triggerState;
+40
+org.apache.curator.CuratorConnectionLossException: KeeperErrorCode = ConnectionLoss
+	at org.apache.curator.framework.imps.CuratorFrameworkImpl.performBackgroundOperation(CuratorFrameworkImpl.java:966) ~[curator-framework-4.1.0.jar:4.1.0]
+	at org.apache.curator.framework.imps.CuratorFrameworkImpl.backgroundOperationsLoop(CuratorFrameworkImpl.java:937) ~[curator-framework-4.1.0.jar:4.1.0]
+	at org.apache.curator.framework.imps.CuratorFrameworkImpl.access$300(CuratorFrameworkImpl.java:66) ~[curator-framework-4.1.0.jar:4.1.0]
+	at org.apache.curator.framework.imps.CuratorFrameworkImpl$4.call(CuratorFrameworkImpl.java:340) ~[curator-framework-4.1.0.jar:4.1.0]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+    报错日志 无法链接
+    本地测试端 需要手动关闭 KeeperErrorCode无法中断
+   
+   Testlog
+   catch CuratorConnectionLossException
+   Caused by: java.net.ConnectException: Connection refused: connect
