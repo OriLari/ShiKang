@@ -1,0 +1,98 @@
+ public static User getModel(UserDto userDto){
+        if (userDto == null){
+            return null;
+        }
+        User user = new User();
+        user.setId(userDto.getId());
+        user.setAuth(userDto.getAuth());
+        user.setAuthName(userDto.getAuthName());
+        user.setAvatarUrl(userDto.getAvatarUrl());
+        user.setEmail(userDto.getEmail());
+        user.setRoleId(userDto.getRoleId());
+        user.setRoleName(userDto.getRoleName());
+        user.setThirdlyId(userDto.getThirdlyId());
+        user.setTrueName(userDto.getTrueName());
+        user.setType(userDto.getType());
+        user.setUserName(userDto.getUserName());
+        user.setStatus(userDto.getStatus());
+        user.setLoginType(userDto.getLoginType());
+        return user;
+        
+        实例比对
+    
+    public class UserAdapter {
+    public static UserDto getDto(User user){
+        if (user == null){
+            return null;
+        
+        }
+
+        UserDto userDto = new UserDto();
+        BeanUtil.copyProperties(user, userDto);
+        userDto.setAuthName(user.getAuthName());
+        userDto.setRoleName(user.getRoleName());
+        if (user.getCreateTime() != null) {
+            userDto.setCreateTimeStr(DateFormartUtil.getDateByTimeMillis(user.getCreateTime().getTime()));
+        }
+        return userDto;
+    }
+    // 参数分析
+    //回传值为use null
+    //非空判断 not null
+    User userDto = new UserDto
+
+    keep client发送
+    keep sever 接收
+
+  public List<Setting> query(SettingQuery query) throws MyException {
+        Assert.notNull(query);
+
+        Page page = new Page(query);
+        SettingCriteria example = getSettingCriteria(query);
+        example.setLimitStart(page.getStart());
+        example.setMaxResults(page.getSize());
+        example.setOrderByClause(query.getSort() == null ? TableField.SORT.SEQUENCE_DESC : query.getSort());
+        return settingDao.selectByExample(example);
+        
+}
+//Socket error occurred: 127.0.0.1/127.0.0.1:2181: Connection refused: no further 
+
+ public ServerVO create(Server server) {
+        cpu.add(CpuVO.create(server.getCpu()));
+        jvm.add(JvmVO.create(server.getJvm()));
+        mem.add(MemVO.create(server.getMem()));
+        sysFile.add(SysFileVO.create(server.getSysFiles()));
+        sys.add(SysVO.create(server.getSys()));
+        return null;
+    }
+    设置传回静态参数 null
+    console 
+    2020-02-13 12:03:38.018  INFO 15192 --- [pool-1-thread-1] com.xkcoding.websocket.task.ServerTask   : 【推送消息】开始执行：2020-02-13 12:03:38
+    2020-02-13 12:03:39.190  INFO 15192 --- [pool-1-thread-1] com.xkcoding.websocket.task.ServerTask   : 【推送消息】执行结束：2020-02-13 12:03:39
+    推送正常
+    withMode(org.apache.zookeeper.CreateMode mode)
+设置创建模式-默认为 CreateMode.PERSISTENT keep写入
+class == getCreateTime(null) //调用class获取Time参数
+withUnhandledErrorListener(UnhandledErrorListener listener) //错误侦听器
+抛出异常catch exception 
+从接口org.apache.curator.framework.api继承的方法
+PathAndBytesable storingStatIn(org.apache.zookeeper.data.Stat stat) 填充提供的stat对象
+
+//ZNode已存在
+orSetData(int version)
+Curator将改为调用setData（）
+无报错 间隔2s生成一条log
+Cause the data to be compressed using the configured compression provider
+private  String  Typename static total //定义静态类
+Caused by: org.springframework.transaction.CannotCreateTransactionException: Could not open JDBC Connection for transaction; nested exception is java.sql //ajax  数组array
+
+控制器的url访问路径与注解@GetMapping（"/xxxx"）不匹配  Config Controller /Server 启动类所在的包需要包含controller所在的包
+public ACLBackgroundPathAndBytesable<String> withACL(List<org.apache.zookeeper.data.ACL> aclList)
+Description copied from interface: ACLable
+Set an ACL list (default is ZooDefs.Ids#OPEN_ACL_UNSAFE)
+Specified by:
+withACL in interface ACLable<BackgroundPathAndBytesable<String>>
+Parameters:
+aclList - the ACL list to use
+Returns:
+this
