@@ -1,0 +1,73 @@
+get instance consloelog
+
+// 初始化分类
+		ArticleService as = ArticleService.getInstance();
+		request.setAttribute("sort_count_map", as.getSortAndCount());
+		// 初始化文章列表
+		request.setAttribute("article_list", as.getArticle());
+		// 初始化获取标签
+		TagService ts = TagService.getInstance();
+		request.setAttribute("tag_list", ts.getAllTag());
+
+		// 初始化侧边栏 日志、分类、标签的个数
+		request.setAttribute("article_number", as.getCount(ArticleDao.SEARCH_ARTICLE));
+		request.setAttribute("sort_number", as.getCount(ArticleDao.SEARCH_SORT));
+		request.setAttribute("tags_number", ts.getTagCount());
+
+		// 阅读排行
+		request.setAttribute("visit_rank", as.getVisitRank());
+
+		// 传网站的统计数据
+		request.setAttribute("visited", VisitorDB.totalVisit());
+		request.setAttribute("member", VisitorDB.totalMember());
+
+		// 转发到 博客主页 界面
+		request.getRequestDispatcher("/page/main.jsp").forward(request, response);
+//去实例化使用  Object _object = new Object()
+调用main（），返回实例化对象 instance 屏蔽constructor的类 println True 生成log
+单实例访问全局 static 分配新内存 new（） getinstace 重新占用 new分配好的实例 生成log 输出后释放内存 
+public static final UserDao getInstance() {
+		if (instance == null) {
+			try {
+				instance = new UserDaoImpl();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return instance;
+	}
+
+    public User login(String username, String password) {
+
+		User user = null;
+
+		String sql = "select * from t_user where user_name=? and user_password=? ";
+		PreparedStatement ps = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			// bean导入
+			if (rs.next()) {
+				Map<String, String> map = new HashMap<String, String>();
+				user = new User();
+				map.put("user_name", rs.getString("user_name"));
+				map.put("user_password", rs.getString("user_name"));
+				map.put("user_id", rs.getString("user_id"));
+				try {
+					BeanUtils.populate(user, map);
+				} catch (Exception e) {
+					throw new RuntimeException();
+				}
+			}
+			DBUtils.Close(ps, rs);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+	}
+	HTTP Status 404 源服务器未能找到目标资源的表示或者是不愿公开一个已经存在的资源表示
+	type Status report
+	Test Tomcat8.5
