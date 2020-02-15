@@ -1,0 +1,43 @@
+Stacktrace:
+	org.apache.jasper.servlet.JspServletWrapper.handleJspException(JspServletWrapper.java:617)
+	org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:514)
+	org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:386)
+	org.apache.jasper.servlet.JspServlet.service(JspServlet.java:330)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	blog.filter.VisitFilter.doFilter(VisitFilter.java:68)
+	blog.filter.CodeFilter.doFilter(CodeFilter.java:41)
+//http Status 500 -Internal Server Error 
+//服务器遇到一个意外情况，阻止它完成请求
+    java.lang.NullPointerException
+	blog.daoImpl.ArticleDaoImpl.getColumAndCount(ArticleDaoImpl.java:103)
+	blog.service.ArticleService.getSortAndCount(ArticleService.java:143)
+	blog.servlet.LoginServlet.doGet(LoginServlet.java:34)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	org.apache.jasper.runtime.PageContextImpl.doForward(PageContextImpl.java:742)
+	org.apache.jasper.runtime.PageContextImpl.forward(PageContextImpl.java:712)
+	org.apache.jsp.index_jsp._jspService(index_jsp.java:119)
+	org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:476)
+	org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:386)
+	org.apache.jasper.servlet.JspServlet.service(JspServlet.java:330)
+	javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	blog.filter.VisitFilter.doFilter(VisitFilter.java:68)
+	blog.filter.CodeFilter.doFilter(CodeFilter.java:41)
+
+    org.apache.jasper.JasperException: 在 [10] 行处理 [/index.jsp] 时发生异常
+
+7: <title>MyBlog</title>
+8: </head>
+9: <body>
+10: 	<jsp:forward page="/LoginServlet" />
+11: </body>
+12: </html>
+Error
+//servlet 配置错误
+//重新配置jar包
+//jsp导向错误
