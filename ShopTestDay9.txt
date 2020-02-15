@@ -1,0 +1,63 @@
+ErrorLog
+IntelliJ IDEA 控制台输出中文乱码
+//解决办法
+打开tomcat配置页面，Edit Configurations
+选择项目部署的tomcat，在配置项VM options文本框中输入-Dfile.encoding=UTF-8
+打开IntelliJ IDEA本地安装目录中bin文件夹下的idea.exe.vmoptions和idea64.exe.vmoptions
+添加-Dfile.encoding=UTF-8
+打开IntelliJ IDEA>File>Setting>Editor>File Encodings
+将Global Encoding、Project Encoding、Default encodeing for properties files设置为UTF-8
+//输出
+15-Feb-2020 15:58:54.004 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Server.服务器版本:     Apache Tomcat/8.5.50
+15-Feb-2020 15:58:54.009 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器构建:            Dec 7 2019 19:19:46 UTC
+15-Feb-2020 15:58:54.009 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 服务器版本号(：8.5.50.0
+15-Feb-2020 15:58:54.009 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+15-Feb-2020 15:58:54.009 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log OS.版本:               10.0
+15-Feb-2020 15:58:54.009 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log 架构:                  amd64
+15-Feb-2020 15:58:54.009 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Java 环境变量:         C:\Program Files\Java\jdk1.8.0_211\jre
+15-Feb-2020 15:58:54.009 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM 版本:              1.8.0_211-b12
+15-Feb-2020 15:58:54.009 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log JVM.供应商:            Oracle Corporation
+15-Feb-2020 15:58:54.009 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\shik8\.IntelliJIdea2019.3\system\tomcat\Unnamed_javaee-blog-master_2
+15-Feb-2020 15:58:54.009 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\WorkData\apache-tomcat-8.5.50
+15-Feb-2020 15:58:54.009 信息 [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\shik8\.IntelliJIdea2019.3\system\tomcat\Unnamed_javaee-blog-master_2\conf\logging.properties
+
+
+ErrorLog
+jsp页面中文输出乱码
+以loginservlet为例
+重新配置当前页login.html的路径
+${pageContext.request.contextPath}/login.html生成动态路径 可同时解决跳转以及乱码
+//输出
+[2020-02-15 03:58:57,662] Artifact javaee-blog-master:war exploded: Artifact is deployed successfully
+[2020-02-15 03:58:57,662] Artifact javaee-blog-master:war exploded: Deploy took 3,070 milliseconds
+15-Feb-2020 15:59:04.245 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory 把web 应用程序部署到目录 [C:\WorkData\apache-tomcat-8.5.50\webapps\manager]
+15-Feb-2020 15:59:04.329 信息 [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory [C:\WorkData\apache-tomcat-8.5.50\webapps\manager] has finished in [82] ms
+
+ErrorLog
+about.html,main.jsp,login.html在重新部署Tomcat后重置路径，依旧造成无法跳转，除主界面外均为404
+//输出日志
+源服务器未能找到目标资源的表示或者是不愿公开一个已经存在的资源表示
+//没有找到原因，但是突然自己解决了
+//Tomcat并未重新部署，只更新了资源类，404报错消失 
+//Tomcat7.0/8.5/9.0对于jar包的兼容性测试
+以junit4.jar为例说明
+console输出 log
+tomcat7.0/8.5   加载junit4低版本jar包无报红 
+tomcat9.0 重新部署junit4jar后，需要在导入依赖htsl.jar无报红
+Console Log Tomcat9.0占用更多的虚拟存储且进程结束后不会主动释放，需要停止TomcatLocal
+Tomcat7.0/8.5 进程结束后会释放内存，但同时也会删除日志记录以及调用数据
+15-Feb-2020 15:58:59.386 警告 [http-nio-8080-exec-1] org.apache.catalina.webresources.Cache.getResource 无法将位于[/WEB-INF/classes/mchange-config-resource-paths.txt]的资源添加到Web应用程序[/javaee_blog_master_war_exploded]的缓存中，因为在清除过期缓存条目后可用空间仍不足 - 请考虑增加缓存的最大空间。
+
+PID2684 端口号8080/8009 任务管理器强制结束javaw进程，无日志输出
+
+//tomcat重新部署后，界面404报错依旧存在
+输出LOG
+Failed to load resource: the server responded with a status of 404 ()
+DevTools failed to parse SourceMap: chrome-extension://gighmmpiobklfepjocnamgkkbiglidom/include.preload.js.map
+DevTools failed to parse SourceMap: chrome-extension://gighmmpiobklfepjocnamgkkbiglidom/include.postload.js.map
+
+
+//Loginout 会导致页面失效
+15-Feb-2020 17:10:22.980 信息 [main] org.apache.coyote.AbstractProtocol.start 开始协议处理句柄["http-nio-8080"]
+15-Feb-2020 17:10:22.997 信息 [main] org.apache.coyote.AbstractProtocol.start 开始协议处理句柄["ajp-nio-8009"]
+端口占用正常 
