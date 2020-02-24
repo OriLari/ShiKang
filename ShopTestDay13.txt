@@ -1,0 +1,22 @@
+public class TagsServlet extends HttpServlet {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// getparameter? no dont exist here.
+		String get = StringUtils.pareCode(request.getParameter("get"));
+		// 初始化标签
+		TagService ts = TagService.getInstance();
+		request.setAttribute("id_tag_map", ts.getTagAndArticle(get));
+
+		request.getRequestDispatcher("/page/tags.jsp").forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+}
+console输出日志
+ return search(array, key, median + 1, right);
+ 未声明变量
